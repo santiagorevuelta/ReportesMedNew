@@ -96,7 +96,37 @@ class GetHome extends Component {
       this.setState({guardar: true});
       return;
     }
+/*
+    var data = new FormData();
+    data.append(
+      'data',
+      '{"imagenes":[],"description":"Prueba 0710","id_tipo_reporte":12,"latitude":6.24574381100001,"longitude":-75.58153595899999,"location":"calle 42c 63c 35","direccion":"calle 42c 63c 35","tipo":"1","observacion":"Prueba \\n\\n","correo":"Laugogi26@gmail.com","origen":"ReportesMed"}',
+    );
+    data.append('identificador', DeviceInfo.getUniqueId());
+    data.append(
+      'hash_key',
+      this.state.data.hash_key,
+    );
+    data.append('uid', 'reportesmed');
 
+    var config = {
+      method: 'post',
+      url: 'https://www.medellin.gov.co/api-reportesmed/reporte',
+      headers: {
+        Accept: '',
+        'Content-Type': 'multipart/form-data',
+      },
+      data: data,
+    };
+
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+      })
+      .catch(function (error) {
+        console.log(error);
+      });*/
+    let device = await DeviceInfo.getUniqueId();
     let result = this.verificarCajas();
     if (result) {
       this.setLoadVisible(true);
@@ -114,19 +144,21 @@ class GetHome extends Component {
       } catch (e) {}
       let jsonData = JSON.stringify(this.state.data);
       formdata.append('data', jsonData);
-      formdata.append('identificador', DeviceInfo.getUniqueId());
+      formdata.append('identificador', device);
 
       const requestOptions = {
-        method: 'POST',
-        header: myHeaders,
+        method: 'post',
         url: this.state.servicio,
+        headers: {
+          Accept: '*/*',
+          'Content-Type': 'multipart/form-data',
+        },
         data: formdata,
       };
 
       this.setLoadVisible(true);
-      axios(requestOptions, formdata)
+      axios(requestOptions)
         .then((res, req) => {
-          console.log(res);
           if (res.data === 'OK') {
             window.modalAlerta(
               this.state.template.title_ok,
@@ -184,7 +216,7 @@ class GetHome extends Component {
             [{text: 'Aceptar'}],
           );
           this.endSend();
-        })
+        });
     }
     // }, 15000);
   };
