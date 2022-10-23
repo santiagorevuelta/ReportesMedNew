@@ -15,7 +15,11 @@
 		7699B88040F8A987B510C191 /* libPods-ReportesMed-ReportesMedTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-ReportesMed-ReportesMedTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		843986972905F88700527121 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 843986962905F88700527121 /* GoogleService-Info.plist */; };
-		843986992905FCB100527121 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 843986982905FCB000527121 /* fonts */; };
+		8439869C2906009E00527121 /* montserratreg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8439869A2906009E00527121 /* montserratreg.ttf */; };
+		8439869D2906009E00527121 /* montserratb.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8439869B2906009E00527121 /* montserratb.ttf */; };
+		843986A02906027C00527121 /* segoeuib.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8439869E2906027B00527121 /* segoeuib.ttf */; };
+		843986A12906027C00527121 /* segoeui.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8439869F2906027C00527121 /* segoeui.ttf */; };
+		843986A2290602DB00527121 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 843986982905FCB000527121 /* fonts */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +50,10 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ReportesMed/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		843986962905F88700527121 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		843986982905FCB000527121 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fonts; path = ../assets/fonts; sourceTree = "<group>"; };
+		8439869A2906009E00527121 /* montserratreg.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = montserratreg.ttf; path = ../assets/fonts/montserratreg.ttf; sourceTree = "<group>"; };
+		8439869B2906009E00527121 /* montserratb.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = montserratb.ttf; path = ../assets/fonts/montserratb.ttf; sourceTree = "<group>"; };
+		8439869E2906027B00527121 /* segoeuib.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = segoeuib.ttf; path = ../assets/fonts/segoeuib.ttf; sourceTree = "<group>"; };
+		8439869F2906027C00527121 /* segoeui.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = segoeui.ttf; path = ../assets/fonts/segoeui.ttf; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-ReportesMed-ReportesMedTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReportesMed-ReportesMedTests.release.xcconfig"; path = "Target Support Files/Pods-ReportesMed-ReportesMedTests/Pods-ReportesMed-ReportesMedTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -120,6 +128,10 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				8439869F2906027C00527121 /* segoeui.ttf */,
+				8439869E2906027B00527121 /* segoeuib.ttf */,
+				8439869B2906009E00527121 /* montserratb.ttf */,
+				8439869A2906009E00527121 /* montserratreg.ttf */,
 				843986982905FCB000527121 /* fonts */,
 				843986962905F88700527121 /* GoogleService-Info.plist */,
 				13B07FAE1A68108700A75B9A /* ReportesMed */,
@@ -248,10 +260,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				843986A2290602DB00527121 /* fonts in Resources */,
+				843986A02906027C00527121 /* segoeuib.ttf in Resources */,
+				843986A12906027C00527121 /* segoeui.ttf in Resources */,
+				8439869C2906009E00527121 /* montserratreg.ttf in Resources */,
+				8439869D2906009E00527121 /* montserratb.ttf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				843986972905F88700527121 /* GoogleService-Info.plist in Resources */,
-				843986992905FCB100527121 /* fonts in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,7 +519,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.1.6;
+				MARKETING_VERSION = 3.1.7;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -532,7 +548,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.1.6;
+				MARKETING_VERSION = 3.1.7;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
