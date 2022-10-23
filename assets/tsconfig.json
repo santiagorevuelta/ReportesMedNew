@@ -1,0 +1,45 @@
+{
+  "use": "prod",
+  "dev": {
+    "params": "http://201.184.171.13:8888/api-reportesmed/parametros",
+    "modules": "http://201.184.171.13:8888/api-reportesmed/modulos",
+    "module":  "http://201.184.171.13:8888/api-reportesmed/modulo/",
+    "validaciones": "http://201.184.171.13:8888/api-reportesmed/validacion/",
+    "default": "http://201.184.171.13:8888/imagenes-reportesmed/",
+    "type": "dev 1.12",
+    "url": "http://201.184.171.13:8888/api-reportesmed/seguimiento/",
+    "search": "http://201.184.171.13:8888/api-reportesmed/busqueda/",
+    "dircoord": "https://www.medellin.gov.co/servicios/api/consultarLongLat",
+    "autodir": "https://www.medellin.gov.co/servicios/api/autocompletarDireccion",
+    "dir": "https://www.medellin.gov.co/servicios/api/consultarDireccion",
+    "map": "https://www.medellin.gov.co/mapas/rest/services/ServiciosCiudad/CartografiaBase/MapServer"
+  },
+  "prep": {
+    "params": "http://10.2.0.111:3023/api/v2/reportesmed/parametros",
+    "modules": "http://10.2.0.111:3023/api/v2/reportesmed/modulos",
+    "module":  "http://10.2.0.111:3023/api/v2/reportesmed/modulo/",
+    "validaciones": "http://10.2.0.111:3023/api/v2/reportesmed/validacion/",
+    "default": "http://10.2.0.111:3031/api/v1/images/reportesmed/",
+    "type": "Preproductivo 1.0",
+    "url": "http://10.2.0.111:3023/api/v2/reportesmed/seguimiento/",
+    "search": "http://10.2.0.111:3023/api/v2/reportesmed/busqueda",
+    "dircoord": "https://www.medellin.gov.co/servicios/api/consultarLongLat",
+    "autodir": "https://www.medellin.gov.co/servicios/api/autocompletarDireccion",
+    "dir": "https://www.medellin.gov.co/servicios/api/consultarDireccion",
+    "map": "https://www.medellin.gov.co/mapas/rest/services/ServiciosCiudad/CartografiaBase/MapServer"
+  },
+  "prod": {
+    "params": "https://www.medellin.gov.co/api-reportesmed/parametros",
+    "modules": "https://www.medellin.gov.co/api-reportesmed/modulos",
+    "module":  "https://www.medellin.gov.co/api-reportesmed/modulo/",
+    "validaciones": "https://www.medellin.gov.co/api-reportesmed/validacion",
+    "default": "https://www.medellin.gov.co/api-imagenes/",
+    "type": "",
+    "url": "https://www.medellin.gov.co/api-reportesmed/seguimiento/",
+    "search": "https://www.medellin.gov.co/api-reportesmed/busqueda",
+    "dircoord": "https://www.medellin.gov.co/servicios/api/consultarLongLat",
+    "autodir": "https://www.medellin.gov.co/servicios/api/autocompletarDireccion",
+    "dir": "https://www.medellin.gov.co/servicios/api/consultarDireccion",
+    "map": "https://www.medellin.gov.co/mapas/rest/services/ServiciosCiudad/CartografiaBase/MapServer"
+  },
+}
