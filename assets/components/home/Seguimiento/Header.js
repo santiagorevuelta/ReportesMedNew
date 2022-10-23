@@ -48,7 +48,7 @@ export default function Header({navigation, label, search, setSearch}) {
                     if (search) {
                         setSearch(!search);
                     } else {
-                        navigation.navigate('Home');
+                        navigation.navigate('HomeMod');
                     }
                 }}
             />

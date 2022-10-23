@@ -7,12 +7,12 @@ import {
 import SliderView from './assets/components/home/Swiper';
 import PlantillaUnoUbic from './assets/components/screens/PlantillaScreenUno';
 import PlantillaUnoRep from './assets/components/screens/PlantillaScreenDos';
-import HomeView from './assets/components/home/Home';
+import HomeView from './assets/components/home/GetHome';
 import {
   responsiveFontSize,
   responsiveHeight,
 } from 'react-native-responsive-dimensions';
-import {Image, Platform, navigate, Alert} from 'react-native';
+import {Image, Platform} from 'react-native';
 import {theme} from './assets/theme';
 import ModalAlert from './assets/Alerta';
 import VariablesState from './Context/variables/VariablesState';

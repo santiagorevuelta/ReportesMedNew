@@ -34,6 +34,7 @@ class GetHome extends React.Component {
     this.state = {
       texts: {},
       mainView: true,
+      int: true,
     };
   }
 
@@ -42,9 +43,11 @@ class GetHome extends React.Component {
   }
 
   initial = async () => {
-    let res = await AsyncStorage.getItem('params');
-    this.setState({texts: JSON.parse(res)});
-    // requestUserPermission();
+    if (this.state.init) {
+      let res = await AsyncStorage.getItem('params');
+      this.setState({texts: JSON.parse(res), init: false});
+      // requestUserPermission();
+    }
   };
 
   render() {
@@ -52,6 +55,7 @@ class GetHome extends React.Component {
       <Tab.Navigator
         theme={theme}
         screenOptions={{
+          headerShown: false,
           tabBarActiveTintColor: '#fff',
           tabBarInactiveTintColor: 'rgb(220,219,219)',
           tabBarStyle: {
