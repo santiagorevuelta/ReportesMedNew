@@ -19,6 +19,7 @@ import android.content.res.Configuration;
 import android.content.Context;
 import android.util.DisplayMetrics;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
+import com.github.douglasjunior.reactNativeGetLocation.ReactNativeGetLocationPackage;
 
 
 public class MainApplication extends Application implements ReactApplication {

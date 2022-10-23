@@ -103,8 +103,8 @@ class GetHome extends Component {
       this.setState({setTime: false});
       //  setTimeout(() => {
       const myHeaders = new Headers();
-      myHeaders.append('Accept', 'application/json');
-      myHeaders.append('Content-Type', 'application/json');
+      myHeaders.append('Accept', '*/*');
+      myHeaders.append('Content-Type', 'multipart/form-data');
       const formdata = new FormData();
       formdata.append('hash_key', this.state.data.hash_key);
       formdata.append('uid', this.state.data.uid);
@@ -124,8 +124,6 @@ class GetHome extends Component {
       };
 
       this.setLoadVisible(true);
-
-      console.log(requestOptions);
       axios(requestOptions, formdata)
         .then((res, req) => {
           console.log(res);
@@ -155,7 +153,7 @@ class GetHome extends Component {
             } else if (!res.data.state) {
               window.modalAlerta(
                 'Error',
-                res.data.data + '<br> Code:' + req.status,
+                res.data.data + ' <br> Code:' + req.status,
                 [{text: 'Aceptar'}],
               );
               this.endSend();
@@ -163,14 +161,14 @@ class GetHome extends Component {
               try {
                 window.modalAlerta(
                   'Error',
-                  res.data + '<br> Code:' + req.status,
+                  res.data + ' <br> Code:' + req.status,
                   [{text: 'Aceptar'}],
                 );
                 this.endSend();
               } catch (err) {
                 window.modalAlerta(
                   'Error',
-                  this.state.items.ERRORGUARDAR + '<br> Code:' + req.status,
+                  this.state.items.ERRORGUARDAR + ' <br> Code:' + req.status,
                   [{text: 'Aceptar'}],
                 );
                 this.endSend();
@@ -178,17 +176,15 @@ class GetHome extends Component {
             }
           }
         })
-        .catch(({request}) => {
+        .catch(e => {
+          console.log(e.message);
           window.modalAlerta(
             'Error',
-            this.state.items.ERRORGUARDAR + 'Code:' + request.status,
+            this.state.items.ERRORGUARDAR + ' <br> Code: ' + e.request.status,
             [{text: 'Aceptar'}],
           );
           this.endSend();
         })
-        .finally(() => {
-          this.endSend();
-        });
     }
     // }, 15000);
   };
