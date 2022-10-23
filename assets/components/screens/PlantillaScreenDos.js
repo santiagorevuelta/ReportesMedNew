@@ -103,8 +103,8 @@ class GetHome extends Component {
       this.setState({setTime: false});
       //  setTimeout(() => {
       const myHeaders = new Headers();
-      myHeaders.append('Accept', '*/*');
-      myHeaders.append('Content-Type', 'multipart/form-data');
+      myHeaders.append('Accept', 'application/json');
+      myHeaders.append('Content-Type', 'application/json');
       const formdata = new FormData();
       formdata.append('hash_key', this.state.data.hash_key);
       formdata.append('uid', this.state.data.uid);
