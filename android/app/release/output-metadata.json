@@ -1,0 +1,20 @@
+{
+  "version": 3,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "co.com.hyg.HuecosMed",
+  "variantName": "release",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "attributes": [],
+      "versionCode": 326,
+      "versionName": "3.1.6",
+      "outputFile": "app-release.apk"
+    }
+  ],
+  "elementType": "File"
+}
