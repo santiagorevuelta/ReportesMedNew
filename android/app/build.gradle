@@ -138,8 +138,8 @@ android {
         applicationId "co.com.hyg.HuecosMed"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 326
-        versionName "3.1.6"
+        versionCode 1
+        versionName "3.1.7"
         buildConfigField "boolean", "IS_NEW_ARCHITECTURE_ENABLED", isNewArchitectureEnabled().toString()
 
         if (isNewArchitectureEnabled()) {
