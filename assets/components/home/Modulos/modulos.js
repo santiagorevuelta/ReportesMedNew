@@ -69,7 +69,6 @@ class HomeReportes extends React.Component {
   searchModuloRes = item => {
     this.setLoad(true);
     if (item.json_plantilla.plantilla) {
-        console.log("click")
         this.props.navigation.navigate('PlantillaUno', {modulo: item});
     } else {
       notifyMessage(this.state.texts.NOFOUND);
