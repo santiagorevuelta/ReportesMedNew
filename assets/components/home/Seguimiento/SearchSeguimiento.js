@@ -4,7 +4,6 @@ import DeviceInfo from 'react-native-device-info';
 
 export default async function searchSeguimiento() {
   let idTel = await DeviceInfo.getUniqueId();
-  console.log(idTel)
   let url = `${tsconfig[tsconfig.use].url}${idTel}`;
   const config = {
     headers: {},
