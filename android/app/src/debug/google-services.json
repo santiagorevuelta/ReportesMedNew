@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1046828790681",
+    "project_id": "reportesmed-3b4f9",
+    "storage_bucket": "reportesmed-3b4f9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1046828790681:android:f3b705a90ade178c741908",
+        "android_client_info": {
+          "package_name": "com.reportesmedapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1046828790681-te2u33r6c9ds8rfqdhpefn9j1rier0nh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSmM2io-karSZA8YIZAhT-hKaAJnAatDg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1046828790681-te2u33r6c9ds8rfqdhpefn9j1rier0nh.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1046828790681-sktbtl7p3c3hin0gh7k978l5mrrks6ns.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "co.com.hyg.HuecosMed"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
