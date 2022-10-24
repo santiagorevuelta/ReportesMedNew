@@ -17,24 +17,68 @@ import {theme} from './assets/theme';
 import ModalAlert from './assets/Alerta';
 import VariablesState from './Context/variables/VariablesState';
 import {enableScreens} from 'react-native-screens';
-
-enableScreens(true);
+import firebase from '@react-native-firebase/app';
+import messaging from '@react-native-firebase/messaging';
+import PushNotification from 'react-native-push-notification';
+import PushNotificationIOS from '@react-native-community/push-notification-ios';
 
 //import messaging from '@react-native-firebase/messaging';
 
 const Stack = createStackNavigator();
 const alerta = React.createRef();
 let intento = 0;
+// const firebaseConfig = {
+//   apiKey: "AIzaSyCitT0d-8UP-0j8jYaHcYhlJXtiaYRHotE",
+//   authDomain: "reportesmed-3b4f9.firebaseapp.com",
+//   projectId: "reportesmed-3b4f9",
+//   storageBucket: "reportesmed-3b4f9.appspot.com",
+//   messagingSenderId: "1046828790681",
+//   appId: "1:1046828790681:web:07b31a50a613da4d741908"
+// };
+async function requestUserPermission() {
+  if (!firebase.apps.length) {
+    await firebase.initializeApp({
+      apiKey: 'AIzaSyBSmM2io-karSZA8YIZAhT-hKaAJnAatDg',
+      appId: '1:1046828790681:android:2ddbe69d5945f7a6741908',
+      databaseURL: 'https://reportesmed-3b4f9.firebaseio.com',
+      messagingSenderId: '1046828790681',
+      projectId: 'reportesmed-3b4f9',
+      storageBucket: 'reportesmed-3b4f9.appspot.com',
+    });
+  }
+  const authorizationStatus = await messaging().requestPermission();
+  const authStatus = await messaging().requestPermission();
+  const enabled =
+    authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
+    authStatus === messaging.AuthorizationStatus.PROVISIONAL;
 
-// async function requestUserPermission() {
-//     const authorizationStatus = await messaging().requestPermission();
-//     if (authorizationStatus) {
-//         // console.log('Permission status:', authorizationStatus);
-//         const token = await messaging().getToken();
-//         console.log('Permission Token:', token);
-//     }
-// }
-
+  if (enabled) {
+    console.log('Authorization status:', authStatus);
+  }
+  if (authorizationStatus) {
+    const token = await messaging().getToken();
+    console.log('Permission Token:', token);
+  }
+  // messaging().setBackgroundMessageHandler(async remoteMessage => {
+  //   // console.log('Message handled in the background!', remoteMessage);
+  //   return;
+  // });
+  enableScreens(true);
+}
+const showNotification = notification => {
+  PushNotification.localNotification({
+    title: notification.title,
+    message: notification.body,
+  });
+  window.modalAlerta(
+    notification.title,
+    notification.body,
+    [{text: 'Aceptar'}],
+    true,
+    true,
+    2,
+  );
+};
 window.modalAlerta = function (
   _title = '',
   _msg = '',
@@ -77,35 +121,29 @@ const navigationOptions = {
 };
 
 const App: () => Node = () => {
-  // requestUserPermission();
-  // const [openSettingsForNotifications] = useMMKVStorage(
-  //     'openSettingsForNotifications',
-  //     MMKV,
-  //     false,
-  // );
-
+  requestUserPermission();
   // useEffect(() => {
-  //     if (openSettingsForNotifications) {
+  //   messaging()
+  //     .getDidOpenSettingsForNotification()
+  //     .then(async didOpenSettingsForNotification => {
+  //       if (didOpenSettingsForNotification) {
   //         navigate('NotificationsSettingsScreen');
-  //     }
-  // }, [openSettingsForNotifications]);
-  // useEffect(() => {
-  //     messaging()
-  //         .getDidOpenSettingsForNotification()
-  //         .then(async didOpenSettingsForNotification => {
-  //             // if (didOpenSettingsForNotification) {
-  //             //     navigate('NotificationsSettingsScreen');
-  //             // }
-  //         });
+  //       }
+  //     });
   // }, []);
 
-  // useEffect(() => {
-  //     const unsubscribe = messaging().onMessage(async remoteMessage => {
-  //         // console.log(remoteMessage);
-  //         // Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
-  //     });
-  //     return unsubscribe;
-  // }, []);
+  useEffect(() => {
+    const unsubscribe = messaging().onMessage(async remoteMessage => {
+      if (Platform.OS !== 'ios') {
+        showNotification(remoteMessage.notification);
+      } else {
+        PushNotificationIOS.requestPermissions().then(() =>
+          showNotification(remoteMessage.notification),
+        );
+      }
+    });
+    return unsubscribe;
+  }, []);
   return (
     <VariablesState>
       <ModalAlert ref={alerta} />

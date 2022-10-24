@@ -13,18 +13,32 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {theme} from '../../theme';
-//import messaging from '@react-native-firebase/messaging';
+import messaging from '@react-native-firebase/messaging';
+import PushNotification from 'react-native-push-notification';
+import PushNotificationIOS from '@react-native-community/push-notification-ios';
 
-// async function requestUserPermission() {
-//     const authorizationStatus = await messaging().requestPermission();
-//     if (authorizationStatus) {
-//         console.log('Permission status:', authorizationStatus);
-//     }
-//     const unsubscribe = messaging().onMessage(async remoteMessage => {
-//         console.log(remoteMessage);
-//     });
-//     return unsubscribe;
-// }
+async function requestUserPermission() {
+  const authorizationStatus = await messaging().requestPermission();
+  if (authorizationStatus) {
+    console.log('Permission status:', authorizationStatus);
+  }
+  const unsubscribe = messaging().onMessage(async remoteMessage => {
+    if (Platform.OS !== 'ios') {
+      showNotification(remoteMessage.notification);
+    } else {
+      PushNotificationIOS.requestPermissions().then(() =>
+        showNotification(remoteMessage.notification),
+      );
+    }
+  });
+  const showNotification = notification => {
+    PushNotification.localNotification({
+      title: notification.title,
+      message: notification.body,
+    });
+  };
+  return unsubscribe;
+}
 
 const Tab = createBottomTabNavigator();
 
@@ -46,7 +60,7 @@ class GetHome extends React.Component {
     if (this.state.init) {
       let res = await AsyncStorage.getItem('params');
       this.setState({texts: JSON.parse(res), init: false});
-      // requestUserPermission();
+      requestUserPermission();
     }
   };
 
