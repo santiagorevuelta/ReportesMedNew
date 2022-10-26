@@ -117,12 +117,11 @@ class GetHome extends React.Component {
           name="Seguimiento"
           component={SeguimientoScreen}
           options={{
-            tabBarLabel: 'Seguir reporte',
+            tabBarLabel: 'Seguir Reporte',
             tabBarIcon: ({color, focused}) => (
-              <MaterialCommunityIcons
-                name="chart-bubble"
-                color={color}
-                size={responsiveFontSize(5)}
+              <Image
+                source={require('../../iconos/iconSeguimiento.png')}
+                style={styles.iconActive}
               />
             ),
           }}

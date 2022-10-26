@@ -8,8 +8,8 @@ import {
     responsiveScreenFontSize,
 } from 'react-native-responsive-dimensions';
 const {width, height} = Dimensions.get('window');
-const fontSizeText = responsiveScreenFontSize(3);
-const fontSizeTextSec = responsiveScreenFontSize(2);
+const fontSizeText = responsiveScreenFontSize(5);
+const fontSizeTextSec = responsiveScreenFontSize(1.8);
 const fontSizeInfo = responsiveScreenFontSize(1.6);
 const monserratBold = Platform.OS !== 'ios' ? 'montserratb' : 'Montserrat-Bold';
 const monserrarI = Platform.OS !== 'ios' ? 'montserratreg' : 'Montserrat';
@@ -81,7 +81,7 @@ const styles = {
         width: responsiveScreenWidth(100),
         height: responsiveScreenHeight(110),
         zIndex: -1,
-        bottom: height < 600 ? '0%' : '-12%',
+        bottom: height < 600 ? '0%' : '-8%',
         position: 'absolute',
         resizeMode: 'contain',
     }, //Fin split
@@ -110,26 +110,26 @@ const styles = {
         alignItems: 'center',
         fontFamily: monserratBold,
         textAlign: 'center',
-        paddingRight: 50,
-        paddingLeft: 50,
-        bottom: '10%',
+        paddingRight: 70,
+        paddingLeft: 70,
+        bottom: '15%',
         zIndex: 5,
     },
     reportar: {
         fontSize: fontSizeText,
-        bottom: 80,
+        bottom: 70,
         color: '#fff',
         fontFamily: monserratBold,
     },
     reportarDanos: {
         fontSize: fontSizeTextSec,
-        bottom: 80,
+        bottom: 65,
         color: '#fff',
         fontFamily: monserratBold,
     },
     reportarTxt: {
         fontSize: fontSizeInfo,
-        bottom: 70,
+        bottom: 40,
         color: '#fff',
         fontFamily: monserrarI,
         textAlign: 'center',

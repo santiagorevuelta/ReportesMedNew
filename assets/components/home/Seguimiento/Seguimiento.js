@@ -18,6 +18,7 @@ const momserratBold = Platform.OS !== 'ios' ? 'montserratb' : 'Montserrat-Bold';
 const momserratI = Platform.OS !== 'ios' ? 'montserratreg' : 'Montserrat';
 
 export default function Seguimiento({navigation}) {
+  const [idTel, setIdTel] = useState(null);
   const [search, setSearch] = useState(false);
   const [dataReport, setDataReport] = useState([]);
   const [numeroReporte, setNumeroReporte] = useState('');
@@ -28,6 +29,7 @@ export default function Seguimiento({navigation}) {
   const [searchlabel, setSearchlabel] = useState(true);
 
   useEffect(() => {
+    setIdTel(DeviceInfo.getUniqueId());
     SearchSeguimiento().then(data => {
       convertirEstados(data);
       setSearchReport(data);
