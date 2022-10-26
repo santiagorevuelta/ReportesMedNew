@@ -240,7 +240,7 @@ class SliderScreen extends React.Component {
           />
         }
         paginationStyle={{
-          bottom: '10%',
+          bottom: '13%',
         }}
         preloadImages={false}
         loop={false}>
@@ -253,7 +253,7 @@ class SliderScreen extends React.Component {
             <Text style={styles.reportar}>{txtReporta}</Text>
             <Text style={styles.reportarDanos}>{txtReportaDan}</Text>
             <Text style={styles.reportarTxt}>{txtReportaAyuda}</Text>
-          </View>
+            </View>
         </View>
         <View style={stylesSlide.slide}>
           <Image

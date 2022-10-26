@@ -19,6 +19,7 @@ const momserratBold = Platform.OS !== 'ios' ? 'montserratb' : 'Montserrat-Bold';
 const momserratI = Platform.OS !== 'ios' ? 'montserratreg' : 'Montserrat';
 
 export default function Seguimiento({navigation}) {
+  const [idTel, setIdTel] = useState(null);
   const [search, setSearch] = useState(false);
   const [dataReport, setDataReport] = useState([]);
   const [numeroReporte, setNumeroReporte] = useState('');
@@ -29,6 +30,7 @@ export default function Seguimiento({navigation}) {
   const [searchlabel, setSearchlabel] = useState(true);
 
   useEffect(() => {
+    setIdTel(DeviceInfo.getUniqueId());
     SearchSeguimiento().then(data => {
       convertirEstados(data);
       setSearchReport(data);
@@ -95,17 +97,23 @@ export default function Seguimiento({navigation}) {
         // console.log(idTel);
         SearchReporte(numeroReporte, idTel).then(data => {
           // setDataReport(data);
-          // console.log('1');
-          // console.log(data);
+          console.log('data');
+          console.log(data);
           if (data.length !== 0) {
             AsyncStorage.setItem('storageReportes', JSON.stringify(data));
             setFilter(data);
             // convertirEstados(data);
           } else {
-            let report = searchReport.find(el => {
-              el.codigo_reporte.includes(numeroReporte);
+            // let report = searchReport.find(el => {
+            //   el.codigo_reporte.includes(numeroReporte);
+            // });
+            let report = searchReport.filter(el => {
+              return el.codigo_reporte.indexOf(numeroReporte) > -1;
             });
-            setFilter(searchReport);
+
+            console.log('searchReport');
+            console.log(report);
+            setFilter(report);
           }
           setSearchlabel(true);
         });

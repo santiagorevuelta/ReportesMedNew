@@ -125,7 +125,7 @@ export const stylesCards = StyleSheet.create({
     detalleSeccion: {
         fontSize: fontSizeTextSec,
         fontFamily: segoeI,
-        color: '#8B8888',
+        color: '#433F3F',
         textAlign: 'center',
         marginTop:2
     },

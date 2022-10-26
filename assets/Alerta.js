@@ -24,7 +24,7 @@ function ModalAlerta(props, ref) {
                 <>
                     <Image
                         source={require('./iconos/notification.png')}
-                        style={[styles.iconReport]}
+                        style={[styles.iconReportUpdate]}
                     />
                 </>
             );
@@ -99,6 +99,7 @@ function ModalAlerta(props, ref) {
                                     fontFamily: momserratBold,
                                     fontSize: 18,
                                     letterSpacing: 0,
+                                    fontWeight: Platform.OS === 'ios' ? '400' : '600',
                                 }}
                                 color={'gray'}>
                                 {item.text}
@@ -197,7 +198,6 @@ const styles = StyleSheet.create({
     },
     btn: {
         width: '100%',
-        paddingVertical: 10,
         justifyContent: 'space-evenly',
         flexDirection: 'row',
     },
@@ -205,7 +205,6 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontFamily: momserratBold,
         fontSize: responsiveFontSize(2.5),
-        paddingBottom: 5,
         marginVertical: 5,
         width: '90%',
         textAlign: 'center',
@@ -235,7 +234,7 @@ const styles = StyleSheet.create({
         width: '100%',
         padding: 10,
         backgroundColor: '#fff',
-        borderRadius: 16,
+        borderRadius: 25,
         textAlign: 'center',
         paddingTop: 20,
         paddingBottom: 10,
@@ -260,7 +259,7 @@ const styles = StyleSheet.create({
     titleUpdate: {
         fontWeight: 'bold',
         fontFamily: momserratBold,
-        fontSize: responsiveFontSize(2.5),
+        fontSize: responsiveFontSize(2),
         paddingBottom: 25,
     },
     msgUpdate: {
@@ -280,10 +279,16 @@ const styles = StyleSheet.create({
         width: '106%',
         marginBottom: 20,
     },
+    iconReportUpdate: {
+        width: '20%',
+        height: '20%',
+        marginVertical: 20,
+        padding: 10,
+        resizeMode: 'contain',
+    },
     iconReport: {
-        width: '25%',
-        height: '25%',
-        marginVertical: 30,
+        width: '20%',
+        height: '20%',
         padding: 10,
         resizeMode: 'contain',
     },
