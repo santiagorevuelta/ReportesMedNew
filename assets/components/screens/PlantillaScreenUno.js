@@ -281,7 +281,7 @@ export default class PlantillaUnoUbic extends Component {
   };
 
   errorTracking = error => {
-    console.log(error);
+    console.log('Error tracking: ' + error);
   };
 
   getLocalizac = () => {
@@ -290,7 +290,7 @@ export default class PlantillaUnoUbic extends Component {
       if (granted !== PermissionsAndroid.RESULTS.GRANTED) {
         this.permisosUbicacion();
       } else {
-        Geolocation.getCurrentPosition(
+       /* Geolocation.getCurrentPosition(
           this.successLocation,
           this.errorLocation,
           {
@@ -298,15 +298,24 @@ export default class PlantillaUnoUbic extends Component {
             timeout: 15000,
             maximumAge: 0,
           },
-        );
+        );*/
+        GetLocation.getCurrentPosition({
+          enableHighAccuracy: true,
+          timeout: 15000,
+          maximumAge: 0,
+        }).then(position => {
+          this.successLocation({coords:position});
+        }).catch(error => {
+            this.errorLocation(error);
+          });
+
       }
     } else {
       GetLocation.getCurrentPosition({
         enableHighAccuracy: true,
         timeout: 15000,
         maximumAge: 0,
-      })
-        .then(position => {
+      }).then(position => {
           this.successLocationIOS(position);
         })
         .catch(error => {
@@ -319,7 +328,6 @@ export default class PlantillaUnoUbic extends Component {
     try {
       let currentLongitude = JSON.stringify(position.coords.longitude);
       let currentLatitude = JSON.stringify(position.coords.latitude);
-      console.log(typeof currentLongitude);
       if (Map_Ref.current) {
         Map_Ref.current?.injectJavaScript(
           `mymap.setView([${currentLatitude}, ${currentLongitude}], 18);`,
@@ -330,13 +338,13 @@ export default class PlantillaUnoUbic extends Component {
       }
       this.llenarUbicacion(currentLatitude, currentLongitude);
       this.getDirGeoCod(currentLatitude, currentLongitude).then();
-
       this.setState({dirInicial: false});
       this.setLoadVisible(false);
+      this.setState({local: false});
     } catch (e) {
+      this.setState({local: false});
       console.log(e);
     }
-    this.setState({local: false});
   };
 
   successLocationIOS = position => {
@@ -375,6 +383,7 @@ export default class PlantillaUnoUbic extends Component {
   };
 
   errorLocation = error => {
+    console.log(this.state.intentosLocation)
     if (this.state.intentosLocation < 5) {
       this.setState({intentosLocation: this.state.intentosLocation + 1});
       this.getLocalizac();

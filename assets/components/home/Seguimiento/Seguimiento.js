@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import {Platform, StyleSheet, View} from 'react-native';
 import TextInput from './TextInputSearch';
 import {Paragraph, Text} from 'react-native-paper';
-import DeviceInfo from 'react-native-device-info';
 import Header from './Header';
 import ScreenResult from './ScreenResult';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -93,19 +92,25 @@ export default function Seguimiento({navigation}) {
     try {
       if (numeroReporte !== null && numeroReporte !== '') {
         // console.log(idTel);
-        SearchReporte(numeroReporte, idTel).then(data => {
+        SearchReporte(numeroReporte).then(data => {
           // setDataReport(data);
-          // console.log('1');
-          // console.log(data);
+          console.log('data');
+          console.log(data);
           if (data.length !== 0) {
             AsyncStorage.setItem('storageReportes', JSON.stringify(data));
             setFilter(data);
             // convertirEstados(data);
           } else {
-            let report = searchReport.find(el => {
-              el.codigo_reporte.includes(numeroReporte);
+            // let report = searchReport.find(el => {
+            //   el.codigo_reporte.includes(numeroReporte);
+            // });
+            let report = searchReport.filter(el => {
+              return el.codigo_reporte.indexOf(numeroReporte) > -1;
             });
-            setFilter(searchReport);
+
+            console.log('searchReport');
+            console.log(report);
+            setFilter(report);
           }
           setSearchlabel(true);
         });
