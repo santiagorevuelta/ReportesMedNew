@@ -7,6 +7,7 @@ import {
   View,
   TouchableOpacity,
   ScrollView,
+  BackHandler,
 } from 'react-native';
 
 import ViewGrupos from './gruposModulos';
@@ -91,6 +92,7 @@ class HomeReportes extends React.Component {
 
   async componentDidMount() {
     this.initial().then();
+    // BackHandler.removeEventListener();
     // setTimeout(() => {
     //     this.setLoad(!this.state.loadData);
     // }, 5000);

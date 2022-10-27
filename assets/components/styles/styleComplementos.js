@@ -13,6 +13,8 @@ const fontSizeText = responsiveFontSize(1.6);
 const fontSizeTitle = responsiveFontSize(1.4);
 const fontSizeAyudas = responsiveFontSize(1);
 const fontSizeInput = responsiveFontSize(1.6);
+const fontSizeTextHeader = responsiveFontSize(1.8);
+
 const inputAlto = width <= 380 ? 35 : 40;
 const segoeBold = Platform.OS !== 'ios' ? 'segoeuib' : 'SegoeUI-Bold';
 const momserratBold = Platform.OS !== 'ios' ? 'montserratb' : 'Montserrat-Bold';
@@ -36,7 +38,8 @@ module.exports = {
         fontFamily: momserratBold,
         textAlign: 'center',
         paddingBottom: 0,
-        marginTop: 8,
+        marginBottom: 10,
+        marginTop: 10,
     },
     divider: {
         border: 'solid',
@@ -60,13 +63,13 @@ module.exports = {
         justifyContent: 'space-between',
         alignItems: 'center',
         textAlign: 'center',
-        flex: 1,
+        margin: 0,
         bottom: 0,
-        padding: 0,
         width: width,
         paddingLeft: 20,
         paddingRight: 20,
-        paddingBottom: '5%',
+        paddingBottom: '0%',
+        marginTop: 10,
     },
     viewicono: {
         width: '100%',
@@ -95,7 +98,6 @@ module.exports = {
         flexDirection: 'row',
     },
     captures: {
-        margin: 5,
         marginLeft: 10,
         flex: 1,
         height: 100,
@@ -118,6 +120,19 @@ module.exports = {
         paddingLeft: 18,
         paddingRight: 18,
     },
+    TextInputDescrip: {
+        width: 'auto',
+        height: 50,
+        borderRadius: 5,
+        borderColor: '#B7B7B7',
+        fontSize: fontSizeInput,
+        zIndex: -1,
+        borderWidth: 1,
+        margin: 0,
+        padding: 0,
+        paddingLeft: 18,
+        paddingRight: 18,
+    },
     Text: {
         color: Colors.black,
         fontSize: fontSizeTitle,
@@ -126,6 +141,19 @@ module.exports = {
         left: 0,
         margin: 0,
         paddingLeft: 5,
+        paddingTop: 5,
+        paddingBottom: 5,
+        padding: 0,
+        zIndex: 1,
+    },
+    TextHeader: {
+        color: Colors.black,
+        fontSize: fontSizeTextHeader,
+        fontFamily: segoeBold,
+        textAlign: 'left',
+        left: 0,
+        margin: 0,
+        paddingLeft: 3,
         paddingTop: 5,
         paddingBottom: 5,
         padding: 0,
@@ -193,6 +221,7 @@ module.exports = {
         textAlign: 'center',
         paddingLeft: 20,
         paddingRight: 20,
+        marginBottom: 20,
         zIndex: 10,
     },
     buttonOk: {
@@ -215,7 +244,7 @@ module.exports = {
         color: '#575a5d',
         fontSize: fontSizeText,
         textAlign: 'center',
-        marginBottom: 5,
+        marginBottom: 7,
     },
     iconoText: {
         height: '60%',

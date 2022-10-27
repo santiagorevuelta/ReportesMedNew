@@ -21,14 +21,14 @@ export default ({searchState, setImagenes, template = {}}) => {
     datosState = searchState();
     images = datosState.data.imagenes;
     return (
-        <View style={{flex: 1}}>
+        <View>
             <Text style={styles.TextFooter}>
                 {datosState.items.AGREGARFOTO +
                     (template?.secciones?.fotos.requeridas > 0
                         ? ''
                         : ' - Opcional')}
             </Text>
-            <Divider style={styles.divider} />
+            {/* <Divider style={styles.divider} /> */}
             <View style={styles.viewCamposFotos}>
                 <View style={styles.viewCamposBtn}>
                     <Text style={styles.Txtfoto}>{datosState.items.FOTO}</Text>

@@ -265,8 +265,8 @@ class GetHome extends Component {
         }
         if (type === 'N') {
           let tel = this.state.data[item.alias];
-          if (tel.length < 10) {
-            general.notifyMessage(item.label + '\n (Debe contener 10 dígitos)');
+          if (tel.length < 7) {
+            general.notifyMessage(item.label + '\n (Debe contener 7 dígitos)');
             this.setLoadVisible(false);
             this.setState({guardar: true});
             return false;

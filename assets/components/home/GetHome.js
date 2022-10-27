@@ -147,8 +147,8 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   iconActive: {
-    width: responsiveScreenWidth(15),
-    height: responsiveScreenWidth(6),
+    width: responsiveScreenWidth(14),
+    height: responsiveScreenWidth(5),
     resizeMode: 'contain',
   },
   image: {

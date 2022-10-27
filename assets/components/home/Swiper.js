@@ -46,7 +46,7 @@ class SliderScreen extends React.Component {
       slideTrue: true,
       parametros: [],
       load: false,
-      tiempoCarga: 2000,
+      tiempoCarga: 3000,
     };
   }
 
@@ -61,15 +61,15 @@ class SliderScreen extends React.Component {
   };
 
   async componentDidMount() {
-    try {
-      let objTue = await AsyncStorage.getItem('slide');
-      if (objTue === 'Ok') {
-        this.props.navigation.navigate('Home', {
-          dato: JSON.stringify({...this.state}),
-        });
-      }
-    } catch (e) {}
-    this.setLoadVisible(true);
+    // try {
+    //   let objTue = await AsyncStorage.getItem('slide');
+    //   if (objTue === 'Ok') {
+    //     this.props.navigation.navigate('Home', {
+    //       dato: JSON.stringify({...this.state}),
+    //     });
+    //   }
+    // } catch (e) {}
+    //this.setLoadVisible(true);
     let res = await this.comprobarInternet();
     if (res) {
       await this.cargarParametros().then(() => {});
@@ -143,23 +143,24 @@ class SliderScreen extends React.Component {
   };
 
   async cambioSlide() {
+    console.log(this.state.tiempoCarga);
     let objTue = await AsyncStorage.getItem('slide');
-    // setTimeout(async () => {
-    if (this.state.slider) {
-      if (objTue === 'Ok') {
-        this.props.navigation.navigate('Home', {
-          dato: JSON.stringify({...this.state}),
-        });
-        this.setState({slideTrue: true});
-        this.setState({slider: true});
-      } else {
-        this.props.navigation.navigate('Slider', {
-          dato: JSON.stringify({...this.state}),
-        });
-        this.setState({slider: false});
+    setTimeout(async () => {
+      if (this.state.slider) {
+        if (objTue === 'Ok') {
+          this.props.navigation.navigate('Home', {
+            dato: JSON.stringify({...this.state}),
+          });
+          this.setState({slideTrue: true});
+          this.setState({slider: true});
+        } else {
+          this.props.navigation.navigate('Slider', {
+            dato: JSON.stringify({...this.state}),
+          });
+          this.setState({slider: false});
+        }
       }
-    }
-    // }, this.state.tiempoCarga);
+    }, this.state.tiempoCarga);
   }
 
   async comprobarInternet() {
@@ -253,7 +254,7 @@ class SliderScreen extends React.Component {
             <Text style={styles.reportar}>{txtReporta}</Text>
             <Text style={styles.reportarDanos}>{txtReportaDan}</Text>
             <Text style={styles.reportarTxt}>{txtReportaAyuda}</Text>
-            </View>
+          </View>
         </View>
         <View style={stylesSlide.slide}>
           <Image
