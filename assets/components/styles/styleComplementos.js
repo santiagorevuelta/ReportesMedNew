@@ -122,7 +122,7 @@ module.exports = {
     },
     TextInputDescrip: {
         width: 'auto',
-        height: 50,
+        height: 60,
         borderRadius: 5,
         borderColor: '#B7B7B7',
         fontSize: fontSizeInput,
@@ -155,7 +155,7 @@ module.exports = {
         margin: 0,
         paddingLeft: 3,
         paddingTop: 5,
-        paddingBottom: 5,
+        paddingBottom: 10,
         padding: 0,
         zIndex: 1,
     },
