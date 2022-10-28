@@ -87,7 +87,7 @@ export default props => {
 const camposScroll = (props, Map_Ref) => {
   return (
     <ScrollView>
-      <View pointerEvents="none">
+      <View pointerEvents="none" style={[{marginBottom: -10}]}>
         <WebView
           ref={Map_Ref}
           source={{
@@ -100,7 +100,17 @@ const camposScroll = (props, Map_Ref) => {
         />
       </View>
       <View
-        style={[styles.viewCampos, styles.viewCampospad, {marginBottom: 5}]}>
+        style={[
+          {
+            marginTop: -10,
+            borderTopRightRadius: 20,
+            borderTopLeftRadius: 20,
+            paddingTop: 10,
+            backgroundColor: '#fff',
+          },
+          styles.viewCampos,
+          styles.viewCampospad,
+        ]}>
         <Text style={[styles.TextHeader, {paddingTop: 0}]}>
           {props.template?.secciones.mapa.labelheaderform}
         </Text>
