@@ -53,7 +53,7 @@ export default props => {
                 defaultValue={datosState.selectedItem}
                 data={datosState.filterData}
                 style={{
-                    backgroundColor: 'transparent',
+                    backgroundColor: '#fff',
                     height: inputAlto,
                     fontSize: fontSizeInput,
                     fontFamily: segoeI,

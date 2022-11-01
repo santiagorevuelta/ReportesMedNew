@@ -13,6 +13,7 @@ module.exports = {
         position: 'absolute',
         width: '100%',
         borderRadius: 5,
+        backgroundColor: '#fff',
         borderWidth: 1,
         borderColor: '#B7B7B7',
         marginBottom: 50,

@@ -158,14 +158,21 @@ const camposScroll = (props, Map_Ref) => {
           }}
         />
       </View>
-      {/*Imagenes */}
-      {datosState.data.imagenes.length !== 0 ? (
-        <View style={styles.viewImages}>
-          <ScrollView horizontal>
-            {general.renderFileData(props, datosState)}
-          </ScrollView>
-        </View>
-      ) : null}
+      <View style={[{marginLeft: 20}]}>
+        {/*Imagenes */}
+        {datosState.data.imagenes.length !== 0 ? (
+          <>
+            <Text style={[styles.Text, {paddingTop: 0}]}>
+              {props.template?.secciones.mapa.labelformImages}
+            </Text>
+            <View style={styles.viewImages}>
+              <ScrollView horizontal>
+                {general.renderFileData(props, datosState)}
+              </ScrollView>
+            </View>
+          </>
+        ) : null}
+      </View>
       {/* {datosState.data.imagenes.length >=
             props.template?.secciones.fotos.cantidad ? null : (
                 <PickerImageAcction

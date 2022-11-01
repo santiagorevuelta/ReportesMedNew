@@ -39,6 +39,7 @@ export default class PlantillaUnoUbic extends Component {
       hash_key: '',
       timeout: null,
       local: false,
+      validReport: false,
     };
   }
 
@@ -112,11 +113,15 @@ export default class PlantillaUnoUbic extends Component {
   }
 
   setImagenes = items => {
+    console.log('change IMG ', this.state.validReport);
+    this.onChangevalidarReporte();
     this.state.data.imagenes = items;
     this.setState({imagen: false});
   };
 
   onchangeInputs = (text, name) => {
+    console.log('change direccion ', this.state.validReport);
+    this.onChangevalidarReporte();
     this.setState({data: {...this.state.data, [name]: text}});
   };
 
@@ -135,6 +140,42 @@ export default class PlantillaUnoUbic extends Component {
         validado = url;
       });
     return validado;
+  };
+
+  onChangevalidarReporte = async () => {
+    const datos = {...this.state.data};
+    if (datos.location === undefined || datos.location === '') {
+      this.setValidReport(false);
+      return;
+    }
+    if (this.state.template.secciones.mapa.requeridoref === '1') {
+      if (datos.description === undefined || datos.description === '') {
+        this.setValidReport(false);
+        return;
+      }
+    }
+    if (this.state.template.validacion_geografica) {
+      let valida = await this.ValidarValidaciones(datos);
+      if (valida == 1) {
+        console.log('ok');
+      } else if (valida == 0) {
+        this.setValidReport(false);
+        return;
+      } else if (valida != 0 && valida != 1) {
+        this.setValidReport(false);
+        return;
+      }
+    }
+    if (this.state.template.secciones.fotos.requeridas > 0) {
+      if (
+        datos.imagenes.length < this.state.template.secciones.fotos.requeridas
+      ) {
+        this.setValidReport(false);
+        return;
+      }
+    }
+    this.setValidReport(true);
+    return true;
   };
 
   validarReporte = async () => {
@@ -446,6 +487,8 @@ export default class PlantillaUnoUbic extends Component {
   }
 
   llenarUbicacion = (currentLatitude, currentLongitude) => {
+    console.log('change move map ', this.state.validReport);
+    this.onChangevalidarReporte();
     this.state.data.latitude = currentLatitude;
     this.state.data.longitude = currentLongitude;
   };
@@ -563,10 +606,17 @@ export default class PlantillaUnoUbic extends Component {
       }
     }
     this.setState({data: {...this.state.data, ['imagen']: false}});
+    console.log('change delete IMG');
+    this.onChangevalidarReporte();
   };
 
   setLoadVisible = load => {
     this.setState({load});
+  };
+
+  setValidReport = validReport => {
+    console.log(validReport);
+    this.setState({validReport});
   };
 
   render() {
@@ -586,6 +636,8 @@ export default class PlantillaUnoUbic extends Component {
         searchState={this.searchState}
         setLocation={this.setLocation}
         setDatosState={this.setDatosState}
+        validReport={this.validReport}
+        setValidReport={this.setValidReport}
         Map_Ref={Map_Ref}
         setImagenes={this.setImagenes}
         FileDeleteData={this.FileDeleteData}

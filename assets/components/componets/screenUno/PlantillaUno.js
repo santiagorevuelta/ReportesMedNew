@@ -144,19 +144,22 @@ export default props => {
             template={props.template}
           />
         )}
-        <Pressable
+        <TouchableOpacity
+          disabled={!datosState.validReport}
+          setValidReport={datosState.setValidReport}
           style={[
             styles.buttonReportar,
             {
-              backgroundColor: jsonheader?.background
-                ? jsonheader.background
-                : '#08517F',
+              backgroundColor:
+                jsonheader?.background
+                ? (datosState.validReport ? jsonheader.background : '#c3c3c3')
+                : (datosState.validReport ? '#08517F' : '#c3c3c3'),
               color: jsonheader?.color ? jsonheader.color : '#fff',
             },
           ]}
           onPress={() => props.validarReporte()}>
           <Text style={styles.buttonOk}>{datosState.items.SIGUIENTE}</Text>
-        </Pressable>
+        </TouchableOpacity>
       </View>
     </View>
   );

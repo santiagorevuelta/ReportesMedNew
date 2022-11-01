@@ -186,7 +186,7 @@ module.exports = {
         zIndex: 3,
         height: 45,
         bottom: responsiveHeight(0),
-        width: '90%',
+        width: '80%',
         marginTop: 15,
         marginBottom: 30,
         borderRadius: 50,
