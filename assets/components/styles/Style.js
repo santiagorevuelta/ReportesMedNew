@@ -133,7 +133,7 @@ module.exports = {
     },
     contenedor: {
         backgroundColor: '#fff',
-        opacity: 1,
+        opacity: 0.95,
         width: width,
         position: 'absolute',
         zIndex: 2,
@@ -151,6 +151,7 @@ module.exports = {
         position: 'absolute',
         bottom: 0,
         width: width,
+        opacity: 0.95,
         // height: responsiveHeight(30),
         backgroundColor: '#ffffff',
         alignItems: 'center',

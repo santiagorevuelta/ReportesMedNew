@@ -113,14 +113,14 @@ export default class PlantillaUnoUbic extends Component {
   }
 
   setImagenes = items => {
-    console.log('change IMG ', this.state.validReport);
+    // console.log('change IMG ', this.state.validReport);
     this.onChangevalidarReporte();
     this.state.data.imagenes = items;
     this.setState({imagen: false});
   };
 
   onchangeInputs = (text, name) => {
-    console.log('change direccion ', this.state.validReport);
+    // console.log('change direccion ', this.state.validReport);
     this.onChangevalidarReporte();
     this.setState({data: {...this.state.data, [name]: text}});
   };
@@ -268,6 +268,7 @@ export default class PlantillaUnoUbic extends Component {
     });
     // console.log(direccion);
     this.setState({selectedItem: direccion});
+    this.onChangevalidarReporte();
   }
 
   limpiar = () => {
@@ -487,7 +488,7 @@ export default class PlantillaUnoUbic extends Component {
   }
 
   llenarUbicacion = (currentLatitude, currentLongitude) => {
-    console.log('change move map ', this.state.validReport);
+    // console.log('change move map ', this.state.validReport);
     this.onChangevalidarReporte();
     this.state.data.latitude = currentLatitude;
     this.state.data.longitude = currentLongitude;
@@ -606,7 +607,7 @@ export default class PlantillaUnoUbic extends Component {
       }
     }
     this.setState({data: {...this.state.data, ['imagen']: false}});
-    console.log('change delete IMG');
+    // console.log('change delete IMG');
     this.onChangevalidarReporte();
   };
 
