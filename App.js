@@ -26,6 +26,14 @@ import PushNotificationIOS from '@react-native-community/push-notification-ios';
 
 const Stack = createStackNavigator();
 const alerta = React.createRef();
+export const subscribeTopic = async topic => {
+  messaging()
+    .subscribeToTopic(topic)
+    .then(() => console.log(topic))
+    .catch(e => {
+      console.log(e);
+    });
+};
 let intento = 0;
 // const firebaseConfig = {
 //   apiKey: "AIzaSyCitT0d-8UP-0j8jYaHcYhlJXtiaYRHotE",
@@ -121,6 +129,7 @@ const navigationOptions = {
 };
 
 const App: () => Node = () => {
+  subscribeTopic('ReportesMed');
   requestUserPermission();
   // useEffect(() => {
   //   messaging()
