@@ -57,19 +57,19 @@ const RadioLocation = L.circleMarker(mymap.getCenter(), {
 
 
 
-L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-    maxZoom: 25,
-    attribution: '',
-    id: 'mapbox/streets-v11',
-    tileSize: 512,
-    zoomOffset: -1
-}).addTo(mymap);
+// L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+//     maxZoom: 25,
+//     attribution: '',
+//     id: 'mapbox/streets-v11',
+//     tileSize: 512,
+//     zoomOffset: -1
+// }).addTo(mymap);
 
 let cartoDefault = "${url}";
 
-// L.esri.tiledMapLayer({
-//  url: cartoDefault
-// }).addTo(mymap);
+L.esri.tiledMapLayer({
+ url: cartoDefault
+}).addTo(mymap);
 
 const marker = L.marker(mymap.getCenter(), {
     icon: myIcon
@@ -110,9 +110,16 @@ mymap.on('moveend', function(e) {
       }).addTo(mymap);*/
       //alert(distance)
     } 
-     
+    // alert(mymap.getZoom());
+    let tolerance = 5;
+    if(mymap.getZoom() > 18){
+      tolerance = 5;
+    } else {
+      tolerance = (65-((10*mymap.getZoom())/3));
+    }
+    // alert(tolerance); 
     let coodenadasfinales = {'4326':coord,'3857':{"lat": res.y, "lng":res.x}};
-        if(distance > 4){
+        if(distance > tolerance){
            //if(!sourceMove){
             // if(firstLatLng !== null){
             firstLatLng = null;

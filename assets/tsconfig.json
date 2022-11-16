@@ -12,7 +12,7 @@
     "dircoord": "https://www.medellin.gov.co/servicios/api/consultarLongLat",
     "autodir": "https://www.medellin.gov.co/servicios/api/autocompletarDireccion",
     "dir": "https://www.medellin.gov.co/servicios/api/consultarDireccion",
-    "map": "https://www.medellin.gov.co/mapas/rest/services/ServiciosCiudad/CartografiaBase/MapServer"
+    "map": "https://www.medellin.gov.co/servidormapas/rest/services/Hosted/CartografiaBase_VectorTile/VectorTileServer"
   },
   "prep": {
     "params": "http://10.2.0.111:3023/api/v2/reportesmed/parametros",
