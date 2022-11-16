@@ -12,7 +12,7 @@ import {
   responsiveFontSize,
   responsiveHeight,
 } from 'react-native-responsive-dimensions';
-import {Image, Platform} from 'react-native';
+import {Alert, Image, Platform} from 'react-native';
 import {theme} from './assets/theme';
 import ModalAlert from './assets/Alerta';
 import VariablesState from './Context/variables/VariablesState';
@@ -27,6 +27,9 @@ import PushNotificationIOS from '@react-native-community/push-notification-ios';
 const Stack = createStackNavigator();
 const alerta = React.createRef();
 export const subscribeTopic = async topic => {
+  
+  // console.log(PushNotification.channelExists());
+  
   messaging()
     .subscribeToTopic(topic)
     .then(() => console.log(topic))
@@ -43,8 +46,9 @@ let intento = 0;
 //   messagingSenderId: "1046828790681",
 //   appId: "1:1046828790681:web:07b31a50a613da4d741908"
 // };
-async function requestUserPermission() {
-  if (!firebase.apps.length) {
+async function firebaseinitializeApp() {
+  console.log(firebase.apps.length);
+  if (firebase.apps.length === 0) {
     await firebase.initializeApp({
       apiKey: 'AIzaSyBSmM2io-karSZA8YIZAhT-hKaAJnAatDg',
       appId: '1:1046828790681:android:2ddbe69d5945f7a6741908',
@@ -54,6 +58,10 @@ async function requestUserPermission() {
       storageBucket: 'reportesmed-3b4f9.appspot.com',
     });
   }
+  subscribeTopic("ReportesMed");
+  requestUserPermission();
+}
+async function requestUserPermission() {
   const authorizationStatus = await messaging().requestPermission();
   const authStatus = await messaging().requestPermission();
   const enabled =
@@ -67,6 +75,14 @@ async function requestUserPermission() {
     const token = await messaging().getToken();
     console.log('Permission Token:', token);
   }
+  
+  PushNotification.createChannel(
+    {
+      channelId: 'ReportesMed', // (required)
+      channelName: 'ReportesMed', // (required)
+    },
+    (created) => console.log(`createChannel returned '${created}'`), // (optional) callback returns whether the channel was created, false means it already existed.
+    );
   // messaging().setBackgroundMessageHandler(async remoteMessage => {
   //   // console.log('Message handled in the background!', remoteMessage);
   //   return;
@@ -75,6 +91,7 @@ async function requestUserPermission() {
 }
 const showNotification = notification => {
   PushNotification.localNotification({
+    channelId: 'ReportesMed',
     title: notification.title,
     message: notification.body,
   });
@@ -129,8 +146,9 @@ const navigationOptions = {
 };
 
 const App: () => Node = () => {
-  subscribeTopic('ReportesMed');
-  requestUserPermission();
+  firebaseinitializeApp();
+  
+  
   // useEffect(() => {
   //   messaging()
   //     .getDidOpenSettingsForNotification()
