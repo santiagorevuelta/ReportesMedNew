@@ -52,6 +52,16 @@ function ModalAlerta(props, ref) {
     }
   };
   const btnApplerender = () => {
+    if (modalImg === 4) {
+      return (
+        <>
+          <Image
+            source={require('./iconos/Trazado.png')}
+            style={[styles.iconReportUpdate]}
+          />
+        </>
+      );
+    }
     if (modalImg === 2) {
       return (
         <>

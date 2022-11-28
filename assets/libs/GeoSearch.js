@@ -1,12 +1,13 @@
 import axios from 'axios';
 
-export async function geoSearch(adress, params) {
+export async function geoSearch(adress, params, accionFilter) {
     if (params === undefined) {
         return;
     }
     const data = {
         aplicacion: 'reportesmed',
         direccion: adress,
+        accion: accionFilter,
     };
     let rta = {};
     let url = params.tipodir == 'aproximada' ? params.dirApx : params.dir;

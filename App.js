@@ -58,7 +58,7 @@ async function firebaseinitializeApp() {
       storageBucket: 'reportesmed-3b4f9.appspot.com',
     });
   }
-  subscribeTopic("ReportesMed");
+  subscribeTopic("ReportesMed1");
   requestUserPermission();
 }
 async function requestUserPermission() {

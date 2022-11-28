@@ -1,5 +1,19 @@
 {
   "use": "prod",
+  "local": {
+    "params": "http://192.168.108.210:3023/api/v2/reportesmed/parametros",
+    "modules": "http://192.168.108.210:3023/api/v2/reportesmed/modulos",
+    "module":  "http://192.168.108.210:3023/api/v2/reportesmed/modulo/",
+    "validaciones": "http://192.168.108.210:3023/api/v2/reportesmed/validacion/",
+    "default": "https://www.medellin.gov.co/api-imagenes/",
+    "type": "dev 1.12",
+    "url": "http://192.168.108.210:3023/api/v2/reportesmed/seguimiento/",
+    "search": "http://192.168.108.210:3023/api/v2/reportesmed/busqueda/",
+    "dircoord": "https://www.medellin.gov.co/servicios/api/consultarLongLat",
+    "autodir": "https://www.medellin.gov.co/servicios/api/autocompletarDireccion",
+    "dir": "https://www.medellin.gov.co/servicios/api/consultarDireccion",
+    "map": "https://www.medellin.gov.co/mapas/rest/services/ServiciosCiudad/CartografiaBase/MapServer"
+  },
   "dev": {
     "params": "http://201.184.171.13:8888/api-reportesmed/parametros",
     "modules": "http://201.184.171.13:8888/api-reportesmed/modulos",
@@ -12,7 +26,7 @@
     "dircoord": "https://www.medellin.gov.co/servicios/api/consultarLongLat",
     "autodir": "https://www.medellin.gov.co/servicios/api/autocompletarDireccion",
     "dir": "https://www.medellin.gov.co/servicios/api/consultarDireccion",
-    "map": "https://www.medellin.gov.co/servidormapas/rest/services/Hosted/CartografiaBase_VectorTile/VectorTileServer"
+    "map": "https://www.medellin.gov.co/mapas/rest/services/ServiciosCiudad/CartografiaBase/MapServer"
   },
   "prep": {
     "params": "http://10.2.0.111:3023/api/v2/reportesmed/parametros",

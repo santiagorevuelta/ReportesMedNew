@@ -181,6 +181,10 @@ export default class PlantillaUnoUbic extends Component {
   validarReporte = async () => {
     let requerido = '\n(requerido)';
     const datos = {...this.state.data};
+    if (datos.latitude === 'SN' || datos.longitude === 'SN') {
+      general.notifyMessage(this.state.items.VERIFICDIR);
+      return;
+    }
     if (datos.location === undefined || datos.location === '') {
       general.notifyMessage(
         this.state.template.secciones.mapa.labeldireccion + requerido,
@@ -255,6 +259,16 @@ export default class PlantillaUnoUbic extends Component {
 
   async getDirGeoCod(lat, lng) {
     let direccion = await CoordsSearch(lat, lng, this.state.items);
+    if (direccion !== 'CL 27   # 81  -    3') {
+      window.modalAlerta(
+        'Lo sentimos',
+        'Este tipo de reporte solo aplica para daños o afectaciones que se presenten dentro de las ciclorutas de la ciudad de Medellín',
+        [{text: 'Aceptar'}],
+        true,
+        true,
+        2,
+      );
+    }
     if (
       (direccion === '' || direccion === null) &&
       this.state.items.ALERTDIR !== ''
@@ -263,6 +277,8 @@ export default class PlantillaUnoUbic extends Component {
       this.limpiar();
       return;
     }
+
+    
     this.setState({
       data: {...this.state.data, location: direccion},
     });
@@ -556,8 +572,18 @@ export default class PlantillaUnoUbic extends Component {
       this.setLoadVisible(false);
       return;
     }
-    let result = await geoSearch(direction, this.state.items);
-    // console.log(result);
+    // console.log(this.state.template.accionFilter_map);
+    let result = await geoSearch(
+      direction,
+      this.state.items,
+      this.state.template.accionFilter_map,
+    );
+    console.log(result);
+    let requerido = '\n(requerido)';
+    if (result.latitude === 'SN' || result.longitude === 'SN') {
+      general.notifyMessage(this.state.items.VERIFICDIR);
+      return;
+    }
     if (result.latitud) {
       let latitud = result.latitud;
       let longitud = result.longitud;
