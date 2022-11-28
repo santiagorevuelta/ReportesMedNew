@@ -101,14 +101,14 @@ mymap.on('moveend', function(e) {
     
     let coord = mymap.getCenter();
     let res = L.CRS.EPSG3857.project(coord);
-    let distance = 5;
+    let distance = 6;
     
     if(firstLatLng !== null){
       distance = parseInt(mymap.distance(firstLatLng ,coord));
-      /*L.polyline([firstLatLng, coord], {
-        color: 'red'
-      }).addTo(mymap);*/
-      //alert(distance)
+      // L.polyline([firstLatLng, coord], {
+      //   color: 'red'
+      // }).addTo(mymap);
+      // alert(distance)
     } 
     // alert(mymap.getZoom());
     let tolerance = 5;
@@ -117,16 +117,16 @@ mymap.on('moveend', function(e) {
     } else {
       tolerance = (65-((10*mymap.getZoom())/3));
     }
-    // alert(tolerance); 
+    // alert(distance); 
     let coodenadasfinales = {'4326':coord,'3857':{"lat": res.y, "lng":res.x}};
         if(distance > tolerance){
-           //if(!sourceMove){
+          //  if(!sourceMove){
             // if(firstLatLng !== null){
-            firstLatLng = null;
+            firstLatLng = coord;
             //sourceMove = false;
             window.ReactNativeWebView.postMessage(JSON.stringify(coodenadasfinales));
             // }
-           //}
+          //  }
      }
 });
 

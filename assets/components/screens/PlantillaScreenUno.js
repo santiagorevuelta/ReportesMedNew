@@ -259,16 +259,6 @@ export default class PlantillaUnoUbic extends Component {
 
   async getDirGeoCod(lat, lng) {
     let direccion = await CoordsSearch(lat, lng, this.state.items);
-    if (direccion !== 'CL 27   # 81  -    3') {
-      window.modalAlerta(
-        'Lo sentimos',
-        'Este tipo de reporte solo aplica para daños o afectaciones que se presenten dentro de las ciclorutas de la ciudad de Medellín',
-        [{text: 'Aceptar'}],
-        true,
-        true,
-        2,
-      );
-    }
     if (
       (direccion === '' || direccion === null) &&
       this.state.items.ALERTDIR !== ''
